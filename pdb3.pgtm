@@ -1,0 +1,3571 @@
+<Project version="20.5.0.4" edition="pro" localizationFileName="C:\______NH_BIN\SQL Maestro Group\PHP Generator for MySQL Professional\lang.id.php" phpDriver="2" outputPath="D:\______NH_PROYEK\php\pdbv2" copySystemFiles="true" generateModifiedDataOnly="false" outputFilesExtension="php" colorSchemeName="cerulean">
+  <ConnectionOptions host="localhost" port="3306" login="root" password="" database="kystudio_simata_pdb" client_encoding="utf8" allow_old_password="false">
+    <ssh_secure secure="false" port="22" authentication_mode="0"/>
+    <http_tunnel tunneling="false" url="">
+      <http_proxy_server use_proxy="false" port="8080"/>
+      <http_authentication/>
+    </http_tunnel>
+  </ConnectionOptions>
+  <ScriptConnectionOptions host="localhost" port="3306" login="root" password="" database="kystudio_simata_pdb" client_encoding="utf8" allow_old_password="false">
+    <ssh_secure secure="false" port="22" authentication_mode="0"/>
+    <http_tunnel tunneling="false" url="">
+      <http_proxy_server use_proxy="false" port="8080"/>
+      <http_authentication/>
+    </http_tunnel>
+  </ScriptConnectionOptions>
+  <DataSources>
+    <DataSource name="publik.pdb" type="query">
+      <PrimaryKeyFields>
+        <Field name="id_pdb"/>
+      </PrimaryKeyFields>
+      <SelectStatement>
+SELECT 
+       *, 
+       &quot;kk_utama&quot;, 
+       &quot;kk_pilihan&quot; 
+FROM pdb      </SelectStatement>
+      <InsertStatements>
+        <Statement>
+INSERT INTO `pdb`(
+       `id_pdb`,
+       `nopen`,
+       `no_kk`, 
+       `nama`, 
+       `nik`, 
+       `jenis_kelamin`, 
+       `tempat_lahir`, 
+       `tanggal_lahir`, 
+       `id_agama`, 
+       `alamat_jalan`, 
+       `rt`, 
+       `rw`, 
+       `nama_dusun`, 
+       `kode_wilayah`, 
+       `nama_ayah`, 
+       `nama_ibu`, 
+       `nisn`, 
+       `id_sp`, 
+       `nopes`,
+       `id_jenis_tinggal`, 
+       `id_alat_transportasi`, 
+       `golongan_darah`, 
+       `tinggi_badan`, 
+       `berat_badan`,
+       `lingkar_kepala`,  
+       `cita`, 
+       `hobi`, 
+       `email`,
+       `kontak_pdb`, 
+       `kontak_ayah`, 
+       `kontak_ibu`, 
+       `kontak_lain`
+) VALUES (
+  :id_pdb,
+  :nopen,
+  :no_kk, 
+  :nama, 
+  :nik, 
+  :jenis_kelamin, 
+  :tempat_lahir, 
+  :tanggal_lahir, 
+  :id_agama, 
+  :alamat_jalan, 
+  :rt, 
+  :rw, 
+  :nama_dusun, 
+  :kode_wilayah, 
+  :nama_ayah, 
+  :nama_ibu, 
+  :nisn, 
+  :id_sp, 
+  :nopes, 
+  :id_jenis_tinggal,
+  :id_alat_transportasi,
+  :golongan_darah, 
+  :tinggi_badan, 
+  :berat_badan, 
+  :cita, 
+  :hobi, 
+  :email, 
+  :kontak_pdb, 
+  :kontak_ayah, 
+  :kontak_ibu, 
+  :kontak_lain
+)        </Statement>
+      </InsertStatements>
+      <UpdateStatements>
+        <Statement>
+UPDATE `pdb` 
+SET 
+    `id_pdb`` = :id_pdb,  
+    `nopen` = :nopen,
+    `no_kk` = :no_kk,  
+    `nama` = :nama,  
+    `nik` = :nik,  
+    `jenis_kelamin` = :jenis_kelamin,  
+    `tempat_lahir` = :tempat_lahir,  
+    `tanggal_lahir` = :tanggal_lahir,  
+    `id_agama` = :id_agama,  
+    `alamat_jalan` = :alamat_jalan,  
+    `rt` = :rt,  
+    `rw` = :rw,  
+    `nama_dusun` = :nama_dusun,  
+    `kode_wilayah` = :kode_wilayah,  
+    `nama_ayah` = :nama_ayah,  
+    `nama_ibu` = :nama_ibu,  
+    `nisn` = :nisn,  
+    `id_sp` = :id_sp,  
+    `nopes` = :nopes,  
+    `id_jenis_tinggal` = :id_jenis_tinggal, 
+    `id_alat_transportasi` = :id_alat_transportasi,
+    `golongan_darah` = :golongan_darah,  
+    `tinggi_badan` = :tinggi_badan,  
+    `berat_badan` = :berat_badan,  
+    `lingkar_kepala` = :lingkar_kepala, 
+    `cita` = :cita,  
+    `hobi` = :hobi,  
+    `email` = :email,
+    `kontak_pdb` = :kontak_pdb, 
+    `kontak_ayah` = :kontak_ayah, 
+    `kontak_ibu` = :kontak_ibu, 
+    `kontak_lain` = :kontak_lain
+WHERE 
+      id_pdb` = :OLD_id_pdb        </Statement>
+      </UpdateStatements>
+      <DeleteStatements>
+        <Statement>
+UPDATE `pdb` 
+SET `aktif` = 0 
+WHERE `id_pdb` = :id_pdb        </Statement>
+      </DeleteStatements>
+    </DataSource>
+    <DataSource name="ref.wilayah" createTopLevelPage="false" type="query">
+      <PrimaryKeyFields>
+        <Field name="kode_wilayah"/>
+      </PrimaryKeyFields>
+      <SelectStatement>
+SELECT 
+       `urut`, 
+       `kode_wilayah`, 
+       `desa_kelurahan`, 
+       `kec`, 
+       `kab_kota`, 
+       `prov`, 
+       `kode_pos`,
+       CONCAT(
+              `desa_kelurahan`, &quot;, &quot;,
+              `kec`, &quot;, &quot;, 
+              `kab_kota`, &quot;, &quot;, 
+              `prov`, &quot;, &quot; , 
+              `kode_pos`
+       ) wilayah_administratif
+FROM 
+     `kystudio_ref`.`wilayah`      </SelectStatement>
+    </DataSource>
+    <DataSource name="ref.satuan.pendidikan" createTopLevelPage="false" type="query">
+      <PrimaryKeyFields>
+        <Field name="id_sp"/>
+      </PrimaryKeyFields>
+      <SelectStatement>
+SELECT 
+       *, 
+       CONCAT(&quot;(&quot;,`npsn`,&quot;)&quot;,`nama_sp`) npsn_nama 
+FROM 
+     `kystudio_ref`.`satuan_pendidikan`      </SelectStatement>
+    </DataSource>
+    <DataSource name="ref.jenis.cita" createTopLevelPage="false" type="query">
+      <PrimaryKeyFields>
+        <Field name="id_cita"/>
+      </PrimaryKeyFields>
+      <SelectStatement>
+SELECT * FROM `kystudio_ref`.`jenis_cita`      </SelectStatement>
+    </DataSource>
+    <DataSource name="ref.jenis.hobi" createTopLevelPage="false" type="query">
+      <PrimaryKeyFields>
+        <Field name="id_hobi"/>
+      </PrimaryKeyFields>
+      <SelectStatement>
+SELECT * FROM `kystudio_ref`.`jenis_hobi`      </SelectStatement>
+    </DataSource>
+    <DataSource name="ref.bidang.keahlian" createTopLevelPage="false" type="query">
+      <PrimaryKeyFields>
+        <Field name="id_bidang_keahlian"/>
+      </PrimaryKeyFields>
+      <SelectStatement>
+SELECT * FROM `kystudio_ref`.`bidang_keahlian`      </SelectStatement>
+    </DataSource>
+    <DataSource name="ref.program.keahlian" createTopLevelPage="false" type="query">
+      <PrimaryKeyFields>
+        <Field name="id_pk"/>
+      </PrimaryKeyFields>
+      <SelectStatement>
+SELECT * FROM `kystudio_ref`.`program_keahlian`      </SelectStatement>
+    </DataSource>
+    <DataSource name="ref.kompetensi.keahlian" createTopLevelPage="false" type="query">
+      <PrimaryKeyFields>
+        <Field name="id_kk"/>
+      </PrimaryKeyFields>
+      <SelectStatement>
+SELECT 
+       *, 
+       CONCAT(`kode_kk`, &quot; &quot;, `nama_kk`)kode_nama_kk 
+FROM 
+     `kystudio_ref`.`kompetensi_keahlian`      </SelectStatement>
+    </DataSource>
+    <DataSource name="publik.pdb.pilihan" type="query">
+      <PrimaryKeyFields>
+        <Field name="id_pdb_pilihan"/>
+      </PrimaryKeyFields>
+      <SelectStatement>
+SELECT * FROM `pdb_pilihan`      </SelectStatement>
+      <InsertStatements>
+        <Statement>
+INSERT INTO `pdb_pilihan`(
+       `id_pdb_pilihan`, 
+       `id_pdb`, 
+       `id_kk`, 
+       `pilihan`, 
+       `status`
+) VALUES (
+         :id_pdb_pilihan, 
+         :id_pdb, 
+         :id_kk, 
+         :pilihan, 
+         :status
+)        </Statement>
+      </InsertStatements>
+      <UpdateStatements>
+        <Statement>
+UPDATE `pdb_pilihan` 
+SET 
+  `id_pdb` = :id_pdb, 
+  `id_kk` = :id_kk, 
+  `pilihan` = :pilihan, 
+  `status` = :status
+WHERE 
+      `id_pdb_pilihan` = :OLD_id_pdb_pilihan        </Statement>
+      </UpdateStatements>
+      <DeleteStatements>
+        <Statement>
+DELETE FROM `pdb_pilihan` 
+WHERE `id_pdb_pilihan` = :id_pdb_pilihan        </Statement>
+      </DeleteStatements>
+    </DataSource>
+    <DataSource name="ref.jenis.tinggal" createTopLevelPage="false" type="query">
+      <PrimaryKeyFields>
+        <Field name="id_jenis_tinggal"/>
+      </PrimaryKeyFields>
+      <SelectStatement>
+SELECT * FROM `kystudio_ref`.`jenis_tinggal`      </SelectStatement>
+    </DataSource>
+    <DataSource name="ref.alat.transportasi" createTopLevelPage="false" type="query">
+      <PrimaryKeyFields>
+        <Field name="id_alat_transportasi"/>
+      </PrimaryKeyFields>
+      <SelectStatement>
+SELECT * FROM `kystudio_ref`.`alat_transportasi`      </SelectStatement>
+    </DataSource>
+    <DataSource name="lap.pendaftar.pil1" type="query">
+      <SelectStatement>
+SELECT 
+       date_format(`p`.`tanggal_dibuat`, &quot;%d-%m-%Y&quot;) tanggal, 
+       `pp`.`id_kk` kk, `pp`.`pilihan` pilihan, count(*) banyak 
+FROM 
+     `pdb` `p` 
+INNER JOIN `pdb_pilihan` `pp` 
+      ON `pp`.`id_pdb` = `p`.`id_pdb` 
+WHERE 
+      `pp`.`pilihan` = 1 
+GROUP BY 
+      tanggal, kk, pilihan 
+ORDER BY tanggal      </SelectStatement>
+    </DataSource>
+    <DataSource name="lap.pendaftar.pil2" type="query">
+      <SelectStatement>
+SELECT 
+       date_format(`p`.`tanggal_dibuat`, &quot;%d-%m-%Y&quot;) tanggal, 
+       `pp`.`id_kk` kk, `pp`.`pilihan` pilihan, count(*) banyak 
+FROM 
+     `pdb` `p` 
+INNER JOIN `pdb_pilihan` `pp` 
+      ON `pp`.`id_pdb` = `p`.`id_pdb` 
+WHERE 
+      `pp`.`pilihan` = 2 
+GROUP BY 
+      tanggal, kk, pilihan 
+ORDER BY tanggal      </SelectStatement>
+    </DataSource>
+    <DataSource name="verval.pdb.berkas" type="query">
+      <PrimaryKeyFields>
+        <Field name="id_pdb_berkas"/>
+      </PrimaryKeyFields>
+      <SelectStatement>
+SELECT * FROM `pdb_berkas`      </SelectStatement>
+      <InsertStatements>
+        <Statement>
+INSERT INTO `pdb_berkas`(
+  `id_pdb_berkas`, 
+  `id_pdb`, 
+  `id_berkas`, 
+  `status`
+) VALUES (
+  :id_pdb_berkas, 
+  :id_pdb, 
+  :id_berkas, 
+  :status
+)        </Statement>
+      </InsertStatements>
+      <UpdateStatements>
+        <Statement>
+UPDATE `pdb_berkas` 
+SET
+  `id_pdb` = :id_pdb, 
+  `id_berkas` = :id_berkas, 
+  `status` = :status
+WHERE 
+  `id_pdb_berkas` = :OLD_id_pdb_berkas        </Statement>
+      </UpdateStatements>
+      <DeleteStatements>
+        <Statement>
+DELETE FROM `pdb_berkas` 
+WHERE 
+  `id_pdb_berkas` = :id_pdb_berkas        </Statement>
+      </DeleteStatements>
+    </DataSource>
+    <DataSource name="ref.berkas" type="query">
+      <PrimaryKeyFields>
+        <Field name="id_berkas"/>
+      </PrimaryKeyFields>
+      <SelectStatement>
+SELECT * FROM `kystudio_ref`.`berkas`      </SelectStatement>
+    </DataSource>
+    <DataSource name="lap.pilihan.kk" type="query">
+      <SelectStatement>
+SELECT 
+       `pp`.`status`, `pp`.`id_kk`, `pp`.`pilihan`, 
+       `kk`.`nama_kk`, `p`.`nopen`, 
+       `p`.`nama`, `p`.`id_sp`, 
+       `p`.`nama_ayah`, `p`.`nama_ibu`, 
+       `p`.`kontak_pdb`, `p`.`kontak_ayah`, 
+       `p`.`kontak_ibu`, `p`.`kontak_lain`
+FROM `pdb` `p` 
+INNER JOIN `pdb_pilihan` `pp` 
+	ON `pp`.`id_pdb` = `p`.`id_pdb`
+INNER JOIN `kystudio_ref`.`kompetensi_keahlian` `kk` 
+	ON `kk`.`id_kk` = `pp`.`id_kk`
+ORDER BY `p`.`nama`, `pp`.`pilihan`, `kk`.`nama_kk`      </SelectStatement>
+    </DataSource>
+    <DataSource name="lap.kilat" type="query">
+      <SelectStatement>
+SELECT 
+       `id_kk` kk, 
+       COUNT(*) banyak 
+FROM 
+     `pdb_pilihan` 
+WHERE 
+      `pilihan` = 1 
+GROUP BY `id_kk`
+ORDER BY `id_kk`      </SelectStatement>
+    </DataSource>
+    <DataSource name="publik.pdb.seleksi" type="query">
+      <PrimaryKeyFields>
+        <Field name="id_pdb_seleksi"/>
+      </PrimaryKeyFields>
+      <SelectStatement>
+SELECT * FROM `pdb_seleksi`      </SelectStatement>
+      <InsertStatements>
+        <Statement>
+INSERT INTO `pdb_seleksi`(
+       `id_pdb_seleksi`, 
+       `id_pdb_pilihan`, 
+       `akad`, 
+       `daftar_ulang`, 
+       `mpls`
+) VALUES (
+  uuid(),
+  :id_pdb_pilihan,
+  :akad,
+  :daftar_ulang,
+  :mpls
+)        </Statement>
+      </InsertStatements>
+      <UpdateStatements>
+        <Statement>
+UPDATE `pdb_seleksi` 
+SET 
+    `id_pdb_pilihan`=:id_pdb_pilihan,
+    `akad`=:akad,
+    `daftar_ulang`=:daftar_ulang,
+    `mpls`=:mpls
+WHERE 
+      `id_pdb_seleksi`=:OLD_id_pdb_seleksi        </Statement>
+      </UpdateStatements>
+      <DeleteStatements>
+        <Statement>
+DELETE FROM pdb_seleksi` 
+WHERE `id_pdb_seleksi`=:id_pdb_seleksi        </Statement>
+      </DeleteStatements>
+    </DataSource>
+    <DataSource name="lap.peralihan.tab" type="query">
+      <PrimaryKeyFields>
+        <Field name="id_kk"/>
+      </PrimaryKeyFields>
+      <SelectStatement>
+SELECT 
+       `pp`.`id_kk`, `pp`.`pilihan`, 
+       `kk`.`nama_kk`, `p`.`nopen`, 
+       `p`.`nama`, `p`.`id_sp`, 
+       `p`.`nama_ayah`, `p`.`nama_ibu`, 
+       `p`.`kontak_pdb`, `p`.`kontak_ayah`, 
+       `p`.`kontak_ibu`, `p`.`kontak_lain`
+FROM `pdb` `p` 
+INNER JOIN `pdb_pilihan` `pp` 
+	ON `pp`.`id_pdb` = `p`.`id_pdb`
+INNER JOIN `kystudio_ref`.`kompetensi_keahlian` `kk` 
+	ON `kk`.`id_kk` = `pp`.`id_kk`
+WHERE 
+	`p`.`id_pdb` IN(
+        SELECT `id_pdb` FROM `pdb_pilihan` `pp` 
+        WHERE `id_pdb_pilihan` NOT IN(
+            SELECT `id_pdb_pilihan` FROM `pdb_pilihan` `pp` 
+            WHERE `status` = 2
+        )
+	)
+ORDER BY `p`.`nama`, `pp`.`pilihan`, `kk`.`nama_kk`      </SelectStatement>
+    </DataSource>
+  </DataSources>
+  <Presentation disableMagicQuotesRuntime="false" showEnvironmentVariables="false" showExecutedQueries="false" showPHPErrorsAndWarnings="false" homePageFileName="beranda.php">
+    <Pages>
+      <Page type="query" queryName="publik.pdb" numberByDataSource="0" fileName="publik.pdb" caption="Biodata Peserta Didik Baru" shortCaption="Pendaftaran PDB" viewFormCaptionTemplate="Data %nik% - %nama%" editFormCaptionTemplate="Ubah Data %nik% - %nama%" insertFormCaption="Pendaftaran Peserta Didik Baru" groupName="Pendaftaran" addSeparator="false" horizontalFilterCondition="aktif = 1" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="3" editAbilityMode="3" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="id_pdb" caption="Id Pdb" showColumnFilter="false" controlVisible="false" defaultInsertValue="%UUID%" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nopen" caption="Nopen" canSetNull="true" enabled="false" defaultInsertValue="%MAKS%" selectedFilterOperators="1589247">
+            <ViewProperties type="text">
+              <Format type="number"/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="no_kk" caption="No Kk" showColumnFilter="false" sortable="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="maskedit" mask="9999999999999999"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama" caption="Nama" totalFunction="5" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nik" caption="Nik" showColumnFilter="false" sortable="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="maskedit" mask="9999999999999999"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="jenis_kelamin" caption="Jenis Kelamin" defaultInsertValue="'L'" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="radioEdit" displayMode="1">
+              <Values>
+                <Value name="L" caption="Laki-laki"/>
+                <Value name="P" caption="Perempuan"/>
+              </Values>
+            </EditProperties>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tempat_lahir" caption="Tempat Lahir" showColumnFilter="false" defaultInsertValue="Sumbawa" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="autocomplete" maxLength="0" suggestionsDataSourceName="publik.pdb" suggestionsFieldName="tempat_lahir"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tanggal_lahir" caption="Tanggal Lahir" selectedFilterOperators="2031871">
+            <ViewProperties type="dateTime" dateTimeFormat="d-m-Y" dateTimeKind="1"/>
+            <EditProperties type="dateTime" dateTimeFormat="d-m-Y" dateTimeKind="1" firstDayOfWeek="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="id_agama" caption="Id Agama" showColumnFilter="false" sortable="false" defaultInsertValue="1" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="comboBox">
+              <Values>
+                <Value name="1" caption="Islam"/>
+                <Value name="2" caption="Kristen"/>
+                <Value name="3" caption="Katholik"/>
+                <Value name="4" caption="Hindu"/>
+                <Value name="5" caption="Budha"/>
+                <Value name="6" caption="Khonghucu"/>
+              </Values>
+            </EditProperties>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="golongan_darah" caption="Golongan Darah" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="comboBox">
+              <Values>
+                <Value name="0" caption="Belum diketahui"/>
+                <Value name="1" caption="A"/>
+                <Value name="2" caption="AB"/>
+                <Value name="3" caption="B"/>
+                <Value name="4" caption="O"/>
+              </Values>
+            </EditProperties>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="alamat_jalan" caption="Alamat Jalan" showColumnFilter="false" sortable="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="rt" caption="Rt" showColumnFilter="false" sortable="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="rw" caption="Rw" showColumnFilter="false" sortable="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_dusun" caption="Nama Dusun" showColumnFilter="false" sortable="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kode_wilayah" caption="Kode Wilayah" selectedFilterOperators="1589247">
+            <Lookup tableName="ref.wilayah" linkFieldName="kode_wilayah" displayFieldName="wilayah_administratif" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_ayah" caption="Nama Ayah" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_ibu" caption="Nama Ibu" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="id_sp" caption="Id Sp" selectedFilterOperators="1589247">
+            <Lookup tableName="ref.satuan.pendidikan" linkFieldName="id_sp" displayFieldName="nama_sp" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nisn" caption="Nisn" showColumnFilter="false" sortable="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="maskedit" mask="9999999999"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nopes" caption="Nopes" headerHint="Fomat baku: 2-19-23-08-068-067-6" showColumnFilter="false" sortable="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="maskedit" mask="9-99-99-99-999-999-9"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="id_jenis_tinggal" caption="Id Jenis Tinggal" showColumnFilter="false" sortable="false" selectedFilterOperators="1573119">
+            <Lookup tableName="ref.jenis.tinggal" linkFieldName="id_jenis_tinggal" displayFieldName="nama" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="id_alat_transportasi" caption="Id Alat Transportasi" showColumnFilter="false" sortable="false" selectedFilterOperators="1573119">
+            <Lookup tableName="ref.alat.transportasi" linkFieldName="id_alat_transportasi" displayFieldName="nama" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tinggi_badan" caption="Tinggi Badan" showColumnFilter="false" sortable="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+            <Validators>
+              <RangeClientValidatorInfo enabled="true" maxValue="200" minValue="130"/>
+              <NumberClientValidatorInfo enabled="true"/>
+            </Validators>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="berat_badan" caption="Berat Badan" showColumnFilter="false" sortable="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+            <Validators>
+              <RangeClientValidatorInfo enabled="true" maxValue="100" minValue="30"/>
+              <NumberClientValidatorInfo enabled="true"/>
+            </Validators>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="cita" caption="Cita" showColumnFilter="false" sortable="false" selectedFilterOperators="1573119">
+            <Lookup tableName="ref.jenis.cita" linkFieldName="id_cita" displayFieldName="nm_cita" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="hobi" caption="Hobi" showColumnFilter="false" sortable="false" selectedFilterOperators="1573119">
+            <Lookup tableName="ref.jenis.hobi" linkFieldName="id_hobi" displayFieldName="nm_hobi" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="email" caption="Email" showColumnFilter="false" sortable="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+            <Validators>
+              <EmailClientValidatorInfo enabled="true"/>
+            </Validators>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kontak_pdb" caption="Kontak Pdb" showColumnFilter="false" sortable="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+            <Validators>
+              <NumberClientValidatorInfo enabled="true"/>
+            </Validators>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kontak_ayah" caption="Kontak Ayah" showColumnFilter="false" sortable="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+            <Validators>
+              <NumberClientValidatorInfo enabled="true"/>
+            </Validators>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kontak_ibu" caption="Kontak Ibu" showColumnFilter="false" sortable="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+            <Validators>
+              <NumberClientValidatorInfo enabled="true"/>
+            </Validators>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kontak_lain" caption="Kontak Lain" showColumnFilter="false" sortable="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+            <Validators>
+              <NumberClientValidatorInfo enabled="true"/>
+            </Validators>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kk_utama" caption="Kk Utama" selectedFilterOperators="1589247">
+            <Lookup tableName="ref.kompetensi.keahlian" linkFieldName="id_kk" displayFieldName="nama_kk" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kk_pilihan" caption="Kk Pilihan" selectedFilterOperators="1589247">
+            <Lookup tableName="ref.kompetensi.keahlian" linkFieldName="id_kk" displayFieldName="nama_kk" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="aktif" caption="Aktif" showColumnFilter="false" sortable="false" canSetNull="true" controlVisible="false" defaultInsertValue="1" selectedFilterOperators="1573119">
+            <ViewProperties type="checkBox" displayType="image"/>
+            <EditProperties type="checkBox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tanggal_dibuat" caption="Tanggal Dibuat" showColumnFilter="false" sortable="false" canSetNull="true" controlVisible="false" defaultInsertValue="%CURRENT_DATETIME%" selectedFilterOperators="2031871">
+            <ViewProperties type="dateTime" dateTimeFormat="d-m-Y H:i:s"/>
+            <EditProperties type="dateTime" dateTimeFormat="d-m-Y H:i:s" firstDayOfWeek="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tanggal_perbarui" caption="Tanggal Perbarui" showColumnFilter="false" sortable="false" canSetNull="true" controlVisible="false" defaultInsertValue="%CURRENT_DATETIME%" selectedFilterOperators="2031871">
+            <ViewProperties type="dateTime" dateTimeFormat="d-m-Y H:i:s"/>
+            <EditProperties type="dateTime" dateTimeFormat="d-m-Y H:i:s" firstDayOfWeek="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="sinkronisasi" caption="Sinkronisasi" showColumnFilter="false" sortable="false" canSetNull="true" controlVisible="false" defaultInsertValue="%CURRENT_DATETIME%" selectedFilterOperators="2031871">
+            <ViewProperties type="dateTime" dateTimeFormat="d-m-Y H:i:s"/>
+            <EditProperties type="dateTime" dateTimeFormat="d-m-Y H:i:s" firstDayOfWeek="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="lingkar_kepala" caption="Lingkar Kepala" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="no_kk"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="id_agama"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="alamat_jalan"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="nama_dusun"/>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nopes"/>
+            <Column fieldName="id_jenis_tinggal"/>
+            <Column fieldName="id_alat_transportasi"/>
+            <Column fieldName="tinggi_badan"/>
+            <Column fieldName="berat_badan"/>
+            <Column fieldName="cita"/>
+            <Column fieldName="hobi"/>
+            <Column fieldName="email"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+            <Column fieldName="kk_utama"/>
+            <Column fieldName="kk_pilihan"/>
+            <Column fieldName="aktif"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+            <Column fieldName="lingkar_kepala"/>
+          </List>
+          <View>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="no_kk"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="id_agama"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="alamat_jalan"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="nama_dusun"/>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nopes"/>
+            <Column fieldName="id_jenis_tinggal"/>
+            <Column fieldName="id_alat_transportasi"/>
+            <Column fieldName="tinggi_badan"/>
+            <Column fieldName="berat_badan"/>
+            <Column fieldName="cita"/>
+            <Column fieldName="hobi"/>
+            <Column fieldName="email"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+            <Column fieldName="kk_utama"/>
+            <Column fieldName="kk_pilihan"/>
+            <Column fieldName="aktif"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+            <Column fieldName="lingkar_kepala"/>
+          </View>
+          <Edit>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="no_kk"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="id_agama"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="alamat_jalan"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="nama_dusun"/>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nopes"/>
+            <Column fieldName="id_jenis_tinggal"/>
+            <Column fieldName="id_alat_transportasi"/>
+            <Column fieldName="tinggi_badan"/>
+            <Column fieldName="berat_badan"/>
+            <Column fieldName="cita"/>
+            <Column fieldName="hobi"/>
+            <Column fieldName="email"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+            <Column fieldName="kk_utama"/>
+            <Column fieldName="kk_pilihan"/>
+            <Column fieldName="aktif"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+            <Column fieldName="lingkar_kepala"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="no_kk"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="id_agama"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="alamat_jalan"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="nama_dusun"/>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nopes"/>
+            <Column fieldName="id_jenis_tinggal"/>
+            <Column fieldName="id_alat_transportasi"/>
+            <Column fieldName="tinggi_badan"/>
+            <Column fieldName="berat_badan"/>
+            <Column fieldName="cita"/>
+            <Column fieldName="hobi"/>
+            <Column fieldName="email"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+            <Column fieldName="kk_utama"/>
+            <Column fieldName="kk_pilihan"/>
+            <Column fieldName="aktif"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+            <Column fieldName="lingkar_kepala"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="no_kk"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="id_agama"/>
+            <Column fieldName="alamat_jalan"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="nama_dusun"/>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nopes"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="tinggi_badan"/>
+            <Column fieldName="berat_badan"/>
+            <Column fieldName="cita"/>
+            <Column fieldName="hobi"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+            <Column fieldName="email"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+            <Column fieldName="aktif"/>
+            <Column fieldName="id_jenis_tinggal"/>
+            <Column fieldName="id_alat_transportasi"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="kk_utama"/>
+            <Column fieldName="kk_pilihan"/>
+            <Column fieldName="lingkar_kepala"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="no_kk"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="id_agama"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="alamat_jalan"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="nama_dusun"/>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nopes"/>
+            <Column fieldName="id_jenis_tinggal"/>
+            <Column fieldName="id_alat_transportasi"/>
+            <Column fieldName="tinggi_badan"/>
+            <Column fieldName="berat_badan"/>
+            <Column fieldName="cita"/>
+            <Column fieldName="hobi"/>
+            <Column fieldName="email"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+            <Column fieldName="kk_utama"/>
+            <Column fieldName="kk_pilihan"/>
+            <Column fieldName="aktif"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+            <Column fieldName="lingkar_kepala"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="no_kk"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="id_agama"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="alamat_jalan"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="nama_dusun"/>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nopes"/>
+            <Column fieldName="id_jenis_tinggal"/>
+            <Column fieldName="id_alat_transportasi"/>
+            <Column fieldName="tinggi_badan"/>
+            <Column fieldName="berat_badan"/>
+            <Column fieldName="cita"/>
+            <Column fieldName="hobi"/>
+            <Column fieldName="email"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+            <Column fieldName="kk_utama"/>
+            <Column fieldName="kk_pilihan"/>
+            <Column fieldName="aktif"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+            <Column fieldName="lingkar_kepala"/>
+          </Print>
+          <Export>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="no_kk"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="id_agama"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="alamat_jalan"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="nama_dusun"/>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nopes"/>
+            <Column fieldName="id_jenis_tinggal"/>
+            <Column fieldName="id_alat_transportasi"/>
+            <Column fieldName="tinggi_badan"/>
+            <Column fieldName="berat_badan"/>
+            <Column fieldName="cita"/>
+            <Column fieldName="hobi"/>
+            <Column fieldName="email"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+            <Column fieldName="kk_utama"/>
+            <Column fieldName="kk_pilihan"/>
+            <Column fieldName="aktif"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+            <Column fieldName="lingkar_kepala"/>
+          </Export>
+          <Compare>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="no_kk"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="id_agama"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="alamat_jalan"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="nama_dusun"/>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nopes"/>
+            <Column fieldName="id_jenis_tinggal"/>
+            <Column fieldName="id_alat_transportasi"/>
+            <Column fieldName="tinggi_badan"/>
+            <Column fieldName="berat_badan"/>
+            <Column fieldName="cita"/>
+            <Column fieldName="hobi"/>
+            <Column fieldName="email"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+            <Column fieldName="kk_utama"/>
+            <Column fieldName="kk_pilihan"/>
+            <Column fieldName="aktif"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+            <Column fieldName="lingkar_kepala"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="id_pdb" visible="false"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="no_kk"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="id_agama"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="alamat_jalan"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="nama_dusun"/>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nopes"/>
+            <Column fieldName="id_jenis_tinggal"/>
+            <Column fieldName="id_alat_transportasi"/>
+            <Column fieldName="tinggi_badan"/>
+            <Column fieldName="berat_badan"/>
+            <Column fieldName="cita"/>
+            <Column fieldName="hobi"/>
+            <Column fieldName="email"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+            <Column fieldName="kk_utama"/>
+            <Column fieldName="kk_pilihan"/>
+            <Column fieldName="aktif"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+            <Column fieldName="lingkar_kepala"/>
+          </MultiEdit>
+        </Columns>
+        <Details>
+          <Detail caption="Pilihan Kompetensi Keahlian">
+            <Page type="query" queryName="publik.pdb.pilihan" numberByDataSource="0" fileName="" caption="Pilihan Kompetensi Keahlian" shortCaption="Pilihan Kompetensi Keahlian" viewFormCaptionTemplate="Pilih Kompetensi Keahlian %id_pdb%" editFormCaptionTemplate="Ubah Pilihan %pilihan% %id_pdb%" insertFormCaption="Pilih Kompetensi Keahlian" addSeveralRecordsAtATimeValues="2" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="3" editAbilityMode="3" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+              <BeforeGridText>
+inline              </BeforeGridText>
+              <DetailedDescription/>
+              <ColumnPresentations>
+                <ColumnPresentation fieldName="id_pdb_pilihan" caption="Id Pdb Pilihan" showColumnFilter="false" defaultInsertValue="%UUID%" selectedFilterOperators="1589247">
+                  <ViewProperties type="text"/>
+                  <EditProperties type="textBox" maxLength="0"/>
+                </ColumnPresentation>
+                <ColumnPresentation fieldName="id_pdb" caption="Id Pdb" showColumnFilter="false" selectedFilterOperators="1589247">
+                  <ViewProperties type="text"/>
+                  <EditProperties type="textBox" maxLength="0"/>
+                </ColumnPresentation>
+                <ColumnPresentation fieldName="id_kk" caption="Id Kk" width="50" widthUnits="cm" selectedFilterOperators="1573119">
+                  <Lookup tableName="ref.kompetensi.keahlian" linkFieldName="id_kk" displayFieldName="nama_kk" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+                  <ViewProperties type="text"/>
+                  <EditProperties type="dynamicCombobox"/>
+                </ColumnPresentation>
+                <ColumnPresentation fieldName="pilihan" caption="Pilihan" width="3" widthUnits="cm" showColumnFilter="false" defaultInsertValue="%p%" selectedFilterOperators="1573119">
+                  <ViewProperties type="text">
+                    <Format type="number" thousandSeparator="."/>
+                  </ViewProperties>
+                  <EditProperties type="radioEdit" displayMode="1">
+                    <Values>
+                      <Value name="1" caption="1-Pilihan utama"/>
+                      <Value name="2" caption="2-Pilihan alternatif"/>
+                    </Values>
+                  </EditProperties>
+                </ColumnPresentation>
+                <ColumnPresentation fieldName="status" caption="Status" showColumnFilter="false" selectedFilterOperators="1573119">
+                  <ViewProperties type="text">
+                    <Format type="number" thousandSeparator="."/>
+                  </ViewProperties>
+                  <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+                </ColumnPresentation>
+              </ColumnPresentations>
+              <Columns>
+                <List>
+                  <Column fieldName="id_pdb_pilihan"/>
+                  <Column fieldName="id_pdb" visible="false"/>
+                  <Column fieldName="id_kk"/>
+                  <Column fieldName="pilihan"/>
+                  <Column fieldName="status"/>
+                </List>
+                <View>
+                  <Column fieldName="id_pdb_pilihan"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_kk"/>
+                  <Column fieldName="pilihan"/>
+                  <Column fieldName="status"/>
+                </View>
+                <Edit>
+                  <Column fieldName="id_pdb_pilihan"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_kk"/>
+                  <Column fieldName="pilihan"/>
+                  <Column fieldName="status"/>
+                </Edit>
+                <Insert>
+                  <Column fieldName="id_pdb_pilihan"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_kk"/>
+                  <Column fieldName="pilihan"/>
+                  <Column fieldName="status"/>
+                </Insert>
+                <QuickFilter>
+                  <Column fieldName="id_pdb_pilihan"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_kk"/>
+                  <Column fieldName="pilihan"/>
+                  <Column fieldName="status"/>
+                </QuickFilter>
+                <FilterBuilder>
+                  <Column fieldName="id_pdb_pilihan"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_kk"/>
+                  <Column fieldName="pilihan"/>
+                  <Column fieldName="status"/>
+                </FilterBuilder>
+                <Print>
+                  <Column fieldName="id_pdb_pilihan"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_kk"/>
+                  <Column fieldName="pilihan"/>
+                  <Column fieldName="status"/>
+                </Print>
+                <Export>
+                  <Column fieldName="id_pdb_pilihan"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_kk"/>
+                  <Column fieldName="pilihan"/>
+                  <Column fieldName="status"/>
+                </Export>
+                <Compare>
+                  <Column fieldName="id_pdb_pilihan"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_kk"/>
+                  <Column fieldName="pilihan"/>
+                  <Column fieldName="status"/>
+                </Compare>
+                <MultiEdit>
+                  <Column fieldName="id_pdb_pilihan" visible="false"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_kk"/>
+                  <Column fieldName="pilihan"/>
+                  <Column fieldName="status"/>
+                </MultiEdit>
+              </Columns>
+              <Details/>
+              <EventHandlers>
+                <OnPreparePage enabled="true">
+require 'aksi/pdb.pilihan_OnPreparePage.inc.php';                </OnPreparePage>
+                <AddEnvironmentVariablesHandler enabled="true">
+require 'aksi/OnAddEnvirontVariable.inc.php';                </AddEnvironmentVariablesHandler>
+                <OnInsertFormEditorValueChanged enabled="true">
+/*
+if (sender.getFieldName() == 'id_kk') {
+  if (sender.getValue() == '') {
+    editors['pilihan'].setValue('1');
+    // editors['nik'].enabled(false);
+    //$('#pilihan_edit').next().show();
+  } else {
+    //editors['nik'].enabled(true);
+    //$('#pilihan_edit').next().hide();
+    editors['pilihan'].setValue(editors['pilihan'].getValue()+1);
+  }
+}
+*/                </OnInsertFormEditorValueChanged>
+                <OnInsertFormLoaded enabled="true">
+/*
+if (editors['id_kk'].getValue() == '') {
+  //editors['nik'].setValue('');
+  //editors['nik'].enabled(false);
+  editors['pilihan'].setValue('1');  
+} else {
+  //editors['pilihan'].enabled(true);
+  editors['pilihan'].setValue('2');
+}
+*/                </OnInsertFormLoaded>
+              </EventHandlers>
+              <RecordPermissions useRecordPermissions="false"/>
+              <PartitionNavigators/>
+            </Page>
+            <MasterForeignKeyColumnMap>
+              <FieldMap masterColumnName="id_pdb" foreginColumnName="id_pdb"/>
+            </MasterForeignKeyColumnMap>
+          </Detail>
+          <Detail caption="Verval Berkas">
+            <Page type="query" queryName="verval.pdb.berkas" numberByDataSource="0" fileName="" caption="Verval Berkas" shortCaption="Verval Berkas" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="3" editAbilityMode="3" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+              <BeforeGridText/>
+              <DetailedDescription/>
+              <ColumnPresentations>
+                <ColumnPresentation fieldName="id_pdb_berkas" caption="Id Pdb Berkas" showColumnFilter="false" selectedFilterOperators="1589247">
+                  <ViewProperties type="text"/>
+                  <EditProperties type="textBox" maxLength="0"/>
+                </ColumnPresentation>
+                <ColumnPresentation fieldName="id_pdb" caption="Id Pdb" selectedFilterOperators="1573119">
+                  <Lookup tableName="pdb" linkFieldName="id_pdb" displayFieldName="nopen" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+                  <ViewProperties type="text">
+                    <Format type="number" thousandSeparator="."/>
+                  </ViewProperties>
+                  <EditProperties type="dynamicCombobox"/>
+                </ColumnPresentation>
+                <ColumnPresentation fieldName="id_berkas" caption="Id Berkas" showColumnFilter="false" selectedFilterOperators="1573119">
+                  <ViewProperties type="text">
+                    <Format type="number" thousandSeparator="."/>
+                  </ViewProperties>
+                  <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+                </ColumnPresentation>
+                <ColumnPresentation fieldName="status" caption="Status" showColumnFilter="false" selectedFilterOperators="1573119">
+                  <ViewProperties type="text">
+                    <Format type="number" thousandSeparator="."/>
+                  </ViewProperties>
+                  <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+                </ColumnPresentation>
+              </ColumnPresentations>
+              <Columns>
+                <List>
+                  <Column fieldName="id_pdb_berkas"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_berkas"/>
+                  <Column fieldName="status"/>
+                </List>
+                <View>
+                  <Column fieldName="id_pdb_berkas"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_berkas"/>
+                  <Column fieldName="status"/>
+                </View>
+                <Edit>
+                  <Column fieldName="id_pdb_berkas"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_berkas"/>
+                  <Column fieldName="status"/>
+                </Edit>
+                <Insert>
+                  <Column fieldName="id_pdb_berkas"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_berkas"/>
+                  <Column fieldName="status"/>
+                </Insert>
+                <QuickFilter>
+                  <Column fieldName="id_pdb_berkas"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_berkas"/>
+                  <Column fieldName="status"/>
+                </QuickFilter>
+                <FilterBuilder>
+                  <Column fieldName="id_pdb_berkas"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_berkas"/>
+                  <Column fieldName="status"/>
+                </FilterBuilder>
+                <Print>
+                  <Column fieldName="id_pdb_berkas"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_berkas"/>
+                  <Column fieldName="status"/>
+                </Print>
+                <Export>
+                  <Column fieldName="id_pdb_berkas"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_berkas"/>
+                  <Column fieldName="status"/>
+                </Export>
+                <Compare>
+                  <Column fieldName="id_pdb_berkas"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_berkas"/>
+                  <Column fieldName="status"/>
+                </Compare>
+                <MultiEdit>
+                  <Column fieldName="id_pdb_berkas" visible="false"/>
+                  <Column fieldName="id_pdb"/>
+                  <Column fieldName="id_berkas"/>
+                  <Column fieldName="status"/>
+                </MultiEdit>
+              </Columns>
+              <Details/>
+              <RecordPermissions useRecordPermissions="false"/>
+              <PartitionNavigators/>
+            </Page>
+            <MasterForeignKeyColumnMap>
+              <FieldMap masterColumnName="id_pdb" foreginColumnName="id_pdb"/>
+            </MasterForeignKeyColumnMap>
+          </Detail>
+        </Details>
+        <EventHandlers>
+          <OnPreparePage enabled="true">
+require 'aksi/pdb_OnPreparePage.inc.php';          </OnPreparePage>
+          <OnGetCustomFormLayout enabled="true">
+require 'aksi/pdb_OnGetCustomFormLayout.inc.php';          </OnGetCustomFormLayout>
+          <OnGetCustomColumnGroup enabled="true">
+require 'aksi/pdb_OnGetCustomColumnGroup.inc.php';          </OnGetCustomColumnGroup>
+          <BeforeInsertRecord enabled="true">
+require 'aksi/pdb_OnBeforeInsertRecord.inc.php';          </BeforeInsertRecord>
+          <BeforeUpdateRecord enabled="true">
+require 'aksi/pdb_OnBeforeUpdateRecord.inc.php';          </BeforeUpdateRecord>
+          <AfterInsertRecord enabled="true">
+require 'aksi/pdb_OnAfterInsertRecord.inc.php';          </AfterInsertRecord>
+          <AfterUpdateRecord enabled="true">
+require 'aksi/pdb_OnAfterUpdateRecord.inc.php';          </AfterUpdateRecord>
+          <CustomRenderColumnHandlerText enabled="true">
+require 'aksi/pdb_OnCustomRenderColumn.inc.php';          </CustomRenderColumnHandlerText>
+          <AddEnvironmentVariablesHandler enabled="true">
+require 'aksi/OnAddEnvirontVariable.inc.php';          </AddEnvironmentVariablesHandler>
+          <OnGetCustomTemplate enabled="true">
+require 'aksi/pdb_OnGetCustomTemplate.inc.php';          </OnGetCustomTemplate>
+          <OnInsertFormValidate enabled="true">
+if (fieldValues['kk_utama'] == &quot;&quot; ) {
+  
+  errorInfo.SetMessage('Kompetensi pilihan 1 belum diisi'); 
+  return false;
+  
+} else if (fieldValues['kk_utama'] == fieldValues['kk_pilihan'] &gt; 100) {
+  
+  errorInfo.SetMessage('Kompetensi keahlian pilihan 1 dan 2 harus berbeda '); 
+  return false;
+
+} else {
+
+}          </OnInsertFormValidate>
+          <OnEditFormValidate enabled="true">
+if (fieldValues['kk_utama'] == &quot;&quot; ) {
+  
+  errorInfo.SetMessage('Kompetensi pilihan 1 belum diisi'); 
+  return false;
+  
+} else if (fieldValues['kk_utama'] == fieldValues['kk_pilihan'] &gt; 100) {
+  
+  errorInfo.SetMessage('Kompetensi keahlian pilihan 1 dan 2 harus berbeda '); 
+  return false;
+
+} else {
+
+}          </OnEditFormValidate>
+          <OnInsertFormEditorValueChanged enabled="true">
+if (sender.getFieldName() == 'no_kk') {
+  if (sender.getValue() == '') {
+    editors['nik'].setValue('');
+    editors['nik'].enabled(false);
+    $('#nik_edit').next().show();
+  } else {
+    editors['nik'].enabled(true);
+    $('#nik_edit').next().hide();
+  }
+}          </OnInsertFormEditorValueChanged>
+          <OnEditFormEditorValueChanged enabled="true">
+if (fieldValues['kk_utama'] == &quot;&quot; ) {
+  
+  errorInfo.SetMessage('Kompetensi pilihan 1 belum diisi'); 
+  return false;
+  
+} else if (fieldValues['kk_utama'] == fieldValues['kk_pilihan'] &gt; 100) {
+  
+  errorInfo.SetMessage('Kompetensi keahlian pilihan 1 dan 2 harus berbeda '); 
+  return false;
+
+} else {
+
+}          </OnEditFormEditorValueChanged>
+          <OnInsertFormLoaded enabled="true">
+if (editors['no_kk'].getValue() == '') {
+  editors['nik'].setValue('');
+  editors['nik'].enabled(false);  
+} else {
+  editors['nik'].enabled(true);
+}
+
+editors['jenis_kelamin'].setValue('L');
+
+editors['alamat_jalan'].setHint('Jalur tempat tinggal peserta didik baru, terdiri atas gang, kompleks, blok, nomor rumah, dan sebagainya selain informasi yang diminta oleh kolom-kolom yang lain pada bagian ini. Sebagai contoh, peserta didik baru tinggal di sebuah kompleks perumahan Moyo Indah yang berada pada Jalan Raya Moyo Hilir, dengan nomor rumah 4, di lingkungan RT 001 dan RW 001, Dusun Stowe Brang, Desa Moyo Mekar. Maka dapat diisi dengan Jl. Raya Moyo Hilir, Komp. Moyo Indah, No. 4');
+editors['nama_dusun'].setHint('Nama dusun tempat tinggal peserta didik saat ini');
+editors['kode_wilayah'].setHint('Nama desa/kelurahan tempat tinggal peserta didik saat ini');
+editors['nama_ayah'].setHint('Nama ayah kandung peserta didik sesuai dokumen resmi yang berlaku tanpa gelar akademik atau sosial');
+editors['nama_ibu'].setHint('Nama ibu kandung peserta didik sesuai dokumen resmi yang berlaku tanpa gelar akademik atau sosial');
+editors['tinggi_badan'].setHint('Tinggi badan dalam CM ditulis tanpa satuan, seperti 160');
+editors['berat_badan'].setHint('Berat badan dalam KG ditulis tanpa satuan, seperti 50');          </OnInsertFormLoaded>
+        </EventHandlers>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="query" queryName="publik.pdb.pilihan" numberByDataSource="0" fileName="publik.pdb.pilihan" caption="Pilihan Kompetensi Keahlian" shortCaption="Pilihan Kompetensi Keahlian" groupName="Pendaftaran" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="3" editAbilityMode="3" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <DefaultSortedColumns>
+          <Column fieldName="id_pdb" orderType="0"/>
+          <Column fieldName="pilihan" orderType="0"/>
+        </DefaultSortedColumns>
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="id_pdb_pilihan" caption="Id Pdb Pilihan" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="id_kk" caption="Id Kk" selectedFilterOperators="1573119">
+            <Lookup tableName="ref.kompetensi.keahlian" linkFieldName="id_kk" displayFieldName="kode_nama_kk" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="id_pdb" caption="Id Pdb" selectedFilterOperators="1589247">
+            <Lookup tableName="publik.pdb" linkFieldName="id_pdb" displayFieldName="nama" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="pilihan" caption="Pilihan" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="radioEdit" displayMode="1">
+              <Values>
+                <Value name="1" caption="1-Pilihan utama"/>
+                <Value name="2" caption="2-Pilihan alternatif"/>
+              </Values>
+            </EditProperties>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="status" caption="Status" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+          </List>
+          <View>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+          </View>
+          <Edit>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+          </Print>
+          <Export>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+          </Export>
+          <Compare>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="id_pdb_pilihan" visible="false"/>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <EventHandlers>
+          <OnPreparePage enabled="true">
+require 'aksi/pdb.pilihan_OnPreparePage.inc.php';          </OnPreparePage>
+          <CustomDrawRow enabled="true">
+$rowClasses = 'kiri';
+          </CustomDrawRow>
+        </EventHandlers>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="query" queryName="ref.wilayah" numberByDataSource="0" fileName="ref.wilayah" caption="Wilayah Administratif" shortCaption="Wilayah Administratif" groupName="Referensi" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="3" editAbilityMode="3" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="kode_wilayah" caption="Kode Wilayah" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="urut" caption="Urut" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="desa_kelurahan" caption="Desa Kelurahan" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kec" caption="Kec" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kab_kota" caption="Kab Kota" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="prov" caption="Prov" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kode_pos" caption="Kode Pos" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="wilayah_administratif" caption="Wilayah Administratif" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="urut"/>
+            <Column fieldName="desa_kelurahan"/>
+            <Column fieldName="kec"/>
+            <Column fieldName="kab_kota"/>
+            <Column fieldName="prov"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="wilayah_administratif"/>
+          </List>
+          <View>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="urut"/>
+            <Column fieldName="desa_kelurahan"/>
+            <Column fieldName="kec"/>
+            <Column fieldName="kab_kota"/>
+            <Column fieldName="prov"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="wilayah_administratif"/>
+          </View>
+          <Edit>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="urut"/>
+            <Column fieldName="desa_kelurahan"/>
+            <Column fieldName="kec"/>
+            <Column fieldName="kab_kota"/>
+            <Column fieldName="prov"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="wilayah_administratif"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="urut"/>
+            <Column fieldName="desa_kelurahan"/>
+            <Column fieldName="kec"/>
+            <Column fieldName="kab_kota"/>
+            <Column fieldName="prov"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="wilayah_administratif"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="urut"/>
+            <Column fieldName="desa_kelurahan"/>
+            <Column fieldName="kec"/>
+            <Column fieldName="kab_kota"/>
+            <Column fieldName="prov"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="wilayah_administratif"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="urut"/>
+            <Column fieldName="desa_kelurahan"/>
+            <Column fieldName="kec"/>
+            <Column fieldName="kab_kota"/>
+            <Column fieldName="prov"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="wilayah_administratif"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="urut"/>
+            <Column fieldName="desa_kelurahan"/>
+            <Column fieldName="kec"/>
+            <Column fieldName="kab_kota"/>
+            <Column fieldName="prov"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="wilayah_administratif"/>
+          </Print>
+          <Export>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="urut"/>
+            <Column fieldName="desa_kelurahan"/>
+            <Column fieldName="kec"/>
+            <Column fieldName="kab_kota"/>
+            <Column fieldName="prov"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="wilayah_administratif"/>
+          </Export>
+          <Compare>
+            <Column fieldName="kode_wilayah"/>
+            <Column fieldName="urut"/>
+            <Column fieldName="desa_kelurahan"/>
+            <Column fieldName="kec"/>
+            <Column fieldName="kab_kota"/>
+            <Column fieldName="prov"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="wilayah_administratif"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="kode_wilayah" visible="false"/>
+            <Column fieldName="urut"/>
+            <Column fieldName="desa_kelurahan"/>
+            <Column fieldName="kec"/>
+            <Column fieldName="kab_kota"/>
+            <Column fieldName="prov"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="wilayah_administratif"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="query" queryName="ref.satuan.pendidikan" numberByDataSource="0" fileName="ref.satuan.pendidikan" caption="Satuan Pendidikan" shortCaption="Satuan Pendidikan" groupName="Referensi" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="3" editAbilityMode="3" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="id_sp" caption="Id Sp" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="npsn" caption="Npsn" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_sp" caption="Nama Sp" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="jenjang_sp" caption="Jenjang Sp" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="radioEdit" displayMode="1">
+              <Values>
+                <Value name="1" caption="MTs"/>
+                <Value name="2" caption="PKBM"/>
+                <Value name="3" caption="Pondok Pesantren"/>
+                <Value name="4" caption="SMP"/>
+              </Values>
+            </EditProperties>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="status" caption="Status" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="checkBox" displayType="image"/>
+            <EditProperties type="checkBox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="npsn_nama" caption="Npsn Nama" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="npsn"/>
+            <Column fieldName="nama_sp"/>
+            <Column fieldName="jenjang_sp"/>
+            <Column fieldName="status"/>
+            <Column fieldName="npsn_nama"/>
+          </List>
+          <View>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="npsn"/>
+            <Column fieldName="nama_sp"/>
+            <Column fieldName="jenjang_sp"/>
+            <Column fieldName="status"/>
+            <Column fieldName="npsn_nama"/>
+          </View>
+          <Edit>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="npsn"/>
+            <Column fieldName="nama_sp"/>
+            <Column fieldName="jenjang_sp"/>
+            <Column fieldName="status"/>
+            <Column fieldName="npsn_nama"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="npsn"/>
+            <Column fieldName="nama_sp"/>
+            <Column fieldName="jenjang_sp"/>
+            <Column fieldName="status"/>
+            <Column fieldName="npsn_nama"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_sp"/>
+            <Column fieldName="jenjang_sp"/>
+            <Column fieldName="npsn"/>
+            <Column fieldName="status"/>
+            <Column fieldName="npsn_nama"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="npsn"/>
+            <Column fieldName="nama_sp"/>
+            <Column fieldName="jenjang_sp"/>
+            <Column fieldName="status"/>
+            <Column fieldName="npsn_nama"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="npsn"/>
+            <Column fieldName="nama_sp"/>
+            <Column fieldName="jenjang_sp"/>
+            <Column fieldName="status"/>
+            <Column fieldName="npsn_nama"/>
+          </Print>
+          <Export>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="npsn"/>
+            <Column fieldName="nama_sp"/>
+            <Column fieldName="jenjang_sp"/>
+            <Column fieldName="status"/>
+            <Column fieldName="npsn_nama"/>
+          </Export>
+          <Compare>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="npsn"/>
+            <Column fieldName="nama_sp"/>
+            <Column fieldName="jenjang_sp"/>
+            <Column fieldName="status"/>
+            <Column fieldName="npsn_nama"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="id_sp" visible="false"/>
+            <Column fieldName="npsn"/>
+            <Column fieldName="nama_sp"/>
+            <Column fieldName="jenjang_sp"/>
+            <Column fieldName="status"/>
+            <Column fieldName="npsn_nama"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="query" queryName="ref.jenis.cita" numberByDataSource="0" fileName="ref.jenis.cita" caption="Jenis Cita-cita" shortCaption="Jenis Cita-cita" groupName="Referensi" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="3" editAbilityMode="3" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="id_cita" caption="Id Cita" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nm_cita" caption="Nm Cita" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="id_cita"/>
+            <Column fieldName="nm_cita"/>
+          </List>
+          <View>
+            <Column fieldName="id_cita"/>
+            <Column fieldName="nm_cita"/>
+          </View>
+          <Edit>
+            <Column fieldName="id_cita"/>
+            <Column fieldName="nm_cita"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="id_cita"/>
+            <Column fieldName="nm_cita"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="id_cita"/>
+            <Column fieldName="nm_cita"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="id_cita"/>
+            <Column fieldName="nm_cita"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="id_cita"/>
+            <Column fieldName="nm_cita"/>
+          </Print>
+          <Export>
+            <Column fieldName="id_cita"/>
+            <Column fieldName="nm_cita"/>
+          </Export>
+          <Compare>
+            <Column fieldName="id_cita"/>
+            <Column fieldName="nm_cita"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="id_cita" visible="false"/>
+            <Column fieldName="nm_cita"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="query" queryName="ref.jenis.hobi" numberByDataSource="0" fileName="ref.jenis.hobi" caption="Jenis Hobi" shortCaption="Jenis Hobi" groupName="Referensi" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="3" editAbilityMode="3" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="id_hobi" caption="Id Hobi" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nm_hobi" caption="Nm Hobi" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="id_hobi"/>
+            <Column fieldName="nm_hobi"/>
+          </List>
+          <View>
+            <Column fieldName="id_hobi"/>
+            <Column fieldName="nm_hobi"/>
+          </View>
+          <Edit>
+            <Column fieldName="id_hobi"/>
+            <Column fieldName="nm_hobi"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="id_hobi"/>
+            <Column fieldName="nm_hobi"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="id_hobi"/>
+            <Column fieldName="nm_hobi"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="id_hobi"/>
+            <Column fieldName="nm_hobi"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="id_hobi"/>
+            <Column fieldName="nm_hobi"/>
+          </Print>
+          <Export>
+            <Column fieldName="id_hobi"/>
+            <Column fieldName="nm_hobi"/>
+          </Export>
+          <Compare>
+            <Column fieldName="id_hobi"/>
+            <Column fieldName="nm_hobi"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="id_hobi" visible="false"/>
+            <Column fieldName="nm_hobi"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="query" queryName="ref.bidang.keahlian" numberByDataSource="0" fileName="ref.bidang.keahlian" caption="Bidang Keahlian" shortCaption="Bidang Keahlian" groupName="Kurikulum" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="3" editAbilityMode="3" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="id_bidang_keahlian" caption="Id Bidang Keahlian" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_bidang" caption="Nama Bidang" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="nama_bidang"/>
+          </List>
+          <View>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="nama_bidang"/>
+          </View>
+          <Edit>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="nama_bidang"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="nama_bidang"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="nama_bidang"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="nama_bidang"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="nama_bidang"/>
+          </Print>
+          <Export>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="nama_bidang"/>
+          </Export>
+          <Compare>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="nama_bidang"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="id_bidang_keahlian" visible="false"/>
+            <Column fieldName="nama_bidang"/>
+          </MultiEdit>
+        </Columns>
+        <Details>
+          <Detail caption="Program Keahlian">
+            <Page type="query" queryName="ref.program.keahlian" numberByDataSource="0" fileName="" caption="Program Keahlian" shortCaption="Program Keahlian" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="3" editAbilityMode="3" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+              <DefaultSortedColumns>
+                <Column fieldName="kode_pk" orderType="0"/>
+              </DefaultSortedColumns>
+              <BeforeGridText/>
+              <DetailedDescription/>
+              <ColumnPresentations>
+                <ColumnPresentation fieldName="id_pk" caption="Id Pk" showColumnFilter="false" selectedFilterOperators="1573119">
+                  <ViewProperties type="text">
+                    <Format type="number" thousandSeparator="."/>
+                  </ViewProperties>
+                  <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+                </ColumnPresentation>
+                <ColumnPresentation fieldName="id_bidang_keahlian" caption="Id Bidang Keahlian" showColumnFilter="false" selectedFilterOperators="1573119">
+                  <ViewProperties type="text">
+                    <Format type="number" thousandSeparator="."/>
+                  </ViewProperties>
+                  <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+                </ColumnPresentation>
+                <ColumnPresentation fieldName="kode_pk" caption="Kode Pk" showColumnFilter="false" selectedFilterOperators="1589247">
+                  <ViewProperties type="text"/>
+                  <EditProperties type="textBox" maxLength="0"/>
+                </ColumnPresentation>
+                <ColumnPresentation fieldName="nama_pk" caption="Nama Pk" showColumnFilter="false" selectedFilterOperators="1589247">
+                  <ViewProperties type="text"/>
+                  <EditProperties type="textBox" maxLength="0"/>
+                </ColumnPresentation>
+              </ColumnPresentations>
+              <Columns>
+                <List>
+                  <Column fieldName="id_pk"/>
+                  <Column fieldName="id_bidang_keahlian"/>
+                  <Column fieldName="kode_pk"/>
+                  <Column fieldName="nama_pk"/>
+                </List>
+                <View>
+                  <Column fieldName="id_pk"/>
+                  <Column fieldName="id_bidang_keahlian"/>
+                  <Column fieldName="kode_pk"/>
+                  <Column fieldName="nama_pk"/>
+                </View>
+                <Edit>
+                  <Column fieldName="id_pk"/>
+                  <Column fieldName="id_bidang_keahlian"/>
+                  <Column fieldName="kode_pk"/>
+                  <Column fieldName="nama_pk"/>
+                </Edit>
+                <Insert>
+                  <Column fieldName="id_pk"/>
+                  <Column fieldName="id_bidang_keahlian"/>
+                  <Column fieldName="kode_pk"/>
+                  <Column fieldName="nama_pk"/>
+                </Insert>
+                <QuickFilter>
+                  <Column fieldName="id_pk"/>
+                  <Column fieldName="id_bidang_keahlian"/>
+                  <Column fieldName="kode_pk"/>
+                  <Column fieldName="nama_pk"/>
+                </QuickFilter>
+                <FilterBuilder>
+                  <Column fieldName="id_pk"/>
+                  <Column fieldName="id_bidang_keahlian"/>
+                  <Column fieldName="kode_pk"/>
+                  <Column fieldName="nama_pk"/>
+                </FilterBuilder>
+                <Print>
+                  <Column fieldName="id_pk"/>
+                  <Column fieldName="id_bidang_keahlian"/>
+                  <Column fieldName="kode_pk"/>
+                  <Column fieldName="nama_pk"/>
+                </Print>
+                <Export>
+                  <Column fieldName="id_pk"/>
+                  <Column fieldName="id_bidang_keahlian"/>
+                  <Column fieldName="kode_pk"/>
+                  <Column fieldName="nama_pk"/>
+                </Export>
+                <Compare>
+                  <Column fieldName="id_pk"/>
+                  <Column fieldName="id_bidang_keahlian"/>
+                  <Column fieldName="kode_pk"/>
+                  <Column fieldName="nama_pk"/>
+                </Compare>
+                <MultiEdit>
+                  <Column fieldName="id_pk" visible="false"/>
+                  <Column fieldName="id_bidang_keahlian"/>
+                  <Column fieldName="kode_pk"/>
+                  <Column fieldName="nama_pk"/>
+                </MultiEdit>
+              </Columns>
+              <Details>
+                <Detail caption="Kompetensi Keahlian">
+                  <Page type="query" queryName="ref.kompetensi.keahlian" numberByDataSource="0" fileName="" caption="Kompetensi Keahlian" shortCaption="Kompetensi Keahlian" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="3" editAbilityMode="3" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+                    <DefaultSortedColumns>
+                      <Column fieldName="kode_kk" orderType="0"/>
+                    </DefaultSortedColumns>
+                    <BeforeGridText/>
+                    <DetailedDescription/>
+                    <ColumnPresentations>
+                      <ColumnPresentation fieldName="id_kk" caption="Id Kk" showColumnFilter="false" selectedFilterOperators="1573119">
+                        <ViewProperties type="text">
+                          <Format type="number" thousandSeparator="."/>
+                        </ViewProperties>
+                        <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+                      </ColumnPresentation>
+                      <ColumnPresentation fieldName="id_pk" caption="Id Pk" showColumnFilter="false" selectedFilterOperators="1573119">
+                        <ViewProperties type="text">
+                          <Format type="number" thousandSeparator="."/>
+                        </ViewProperties>
+                        <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+                      </ColumnPresentation>
+                      <ColumnPresentation fieldName="kode_kk" caption="Kode Kk" showColumnFilter="false" selectedFilterOperators="1589247">
+                        <ViewProperties type="text"/>
+                        <EditProperties type="textBox" maxLength="0"/>
+                      </ColumnPresentation>
+                      <ColumnPresentation fieldName="nama_kk" caption="Nama Kk" showColumnFilter="false" selectedFilterOperators="1589247">
+                        <ViewProperties type="text"/>
+                        <EditProperties type="textBox" maxLength="0"/>
+                      </ColumnPresentation>
+                      <ColumnPresentation fieldName="singkat" caption="Singkat" showColumnFilter="false" selectedFilterOperators="1589247">
+                        <ViewProperties type="text"/>
+                        <EditProperties type="textBox" maxLength="0"/>
+                      </ColumnPresentation>
+                      <ColumnPresentation fieldName="spektrum2018" caption="Spektrum2018" showColumnFilter="false" selectedFilterOperators="1573119">
+                        <ViewProperties type="text">
+                          <Format type="number" thousandSeparator="."/>
+                        </ViewProperties>
+                        <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+                      </ColumnPresentation>
+                      <ColumnPresentation fieldName="spektrum2021" caption="Spektrum2021" showColumnFilter="false" selectedFilterOperators="1573119">
+                        <ViewProperties type="text">
+                          <Format type="number" thousandSeparator="."/>
+                        </ViewProperties>
+                        <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+                      </ColumnPresentation>
+                      <ColumnPresentation fieldName="kode_nama_kk" caption="Kode Nama Kk" showColumnFilter="false" selectedFilterOperators="1589247">
+                        <ViewProperties type="text"/>
+                        <EditProperties type="textBox" maxLength="0"/>
+                      </ColumnPresentation>
+                    </ColumnPresentations>
+                    <Columns>
+                      <List>
+                        <Column fieldName="id_kk"/>
+                        <Column fieldName="id_pk"/>
+                        <Column fieldName="kode_kk"/>
+                        <Column fieldName="nama_kk"/>
+                        <Column fieldName="singkat"/>
+                        <Column fieldName="spektrum2018"/>
+                        <Column fieldName="spektrum2021"/>
+                        <Column fieldName="kode_nama_kk"/>
+                      </List>
+                      <View>
+                        <Column fieldName="id_kk"/>
+                        <Column fieldName="id_pk"/>
+                        <Column fieldName="kode_kk"/>
+                        <Column fieldName="nama_kk"/>
+                        <Column fieldName="singkat"/>
+                        <Column fieldName="spektrum2018"/>
+                        <Column fieldName="spektrum2021"/>
+                        <Column fieldName="kode_nama_kk"/>
+                      </View>
+                      <Edit>
+                        <Column fieldName="id_kk"/>
+                        <Column fieldName="id_pk"/>
+                        <Column fieldName="kode_kk"/>
+                        <Column fieldName="nama_kk"/>
+                        <Column fieldName="singkat"/>
+                        <Column fieldName="spektrum2018"/>
+                        <Column fieldName="spektrum2021"/>
+                        <Column fieldName="kode_nama_kk"/>
+                      </Edit>
+                      <Insert>
+                        <Column fieldName="id_kk"/>
+                        <Column fieldName="id_pk"/>
+                        <Column fieldName="kode_kk"/>
+                        <Column fieldName="nama_kk"/>
+                        <Column fieldName="singkat"/>
+                        <Column fieldName="spektrum2018"/>
+                        <Column fieldName="spektrum2021"/>
+                        <Column fieldName="kode_nama_kk"/>
+                      </Insert>
+                      <QuickFilter>
+                        <Column fieldName="id_kk"/>
+                        <Column fieldName="id_pk"/>
+                        <Column fieldName="kode_kk"/>
+                        <Column fieldName="nama_kk"/>
+                        <Column fieldName="spektrum2018"/>
+                        <Column fieldName="spektrum2021"/>
+                        <Column fieldName="singkat"/>
+                        <Column fieldName="kode_nama_kk"/>
+                      </QuickFilter>
+                      <FilterBuilder>
+                        <Column fieldName="id_kk"/>
+                        <Column fieldName="id_pk"/>
+                        <Column fieldName="kode_kk"/>
+                        <Column fieldName="nama_kk"/>
+                        <Column fieldName="singkat"/>
+                        <Column fieldName="spektrum2018"/>
+                        <Column fieldName="spektrum2021"/>
+                        <Column fieldName="kode_nama_kk"/>
+                      </FilterBuilder>
+                      <Print>
+                        <Column fieldName="id_kk"/>
+                        <Column fieldName="id_pk"/>
+                        <Column fieldName="kode_kk"/>
+                        <Column fieldName="nama_kk"/>
+                        <Column fieldName="singkat"/>
+                        <Column fieldName="spektrum2018"/>
+                        <Column fieldName="spektrum2021"/>
+                        <Column fieldName="kode_nama_kk"/>
+                      </Print>
+                      <Export>
+                        <Column fieldName="id_kk"/>
+                        <Column fieldName="id_pk"/>
+                        <Column fieldName="kode_kk"/>
+                        <Column fieldName="nama_kk"/>
+                        <Column fieldName="singkat"/>
+                        <Column fieldName="spektrum2018"/>
+                        <Column fieldName="spektrum2021"/>
+                        <Column fieldName="kode_nama_kk"/>
+                      </Export>
+                      <Compare>
+                        <Column fieldName="id_kk"/>
+                        <Column fieldName="id_pk"/>
+                        <Column fieldName="kode_kk"/>
+                        <Column fieldName="nama_kk"/>
+                        <Column fieldName="singkat"/>
+                        <Column fieldName="spektrum2018"/>
+                        <Column fieldName="spektrum2021"/>
+                        <Column fieldName="kode_nama_kk"/>
+                      </Compare>
+                      <MultiEdit>
+                        <Column fieldName="id_kk" visible="false"/>
+                        <Column fieldName="id_pk"/>
+                        <Column fieldName="kode_kk"/>
+                        <Column fieldName="nama_kk"/>
+                        <Column fieldName="singkat"/>
+                        <Column fieldName="spektrum2018"/>
+                        <Column fieldName="spektrum2021"/>
+                        <Column fieldName="kode_nama_kk"/>
+                      </MultiEdit>
+                    </Columns>
+                    <Details/>
+                    <RecordPermissions useRecordPermissions="false"/>
+                    <PartitionNavigators/>
+                  </Page>
+                  <MasterForeignKeyColumnMap>
+                    <FieldMap masterColumnName="id_pk" foreginColumnName="id_pk"/>
+                  </MasterForeignKeyColumnMap>
+                </Detail>
+              </Details>
+              <RecordPermissions useRecordPermissions="false"/>
+              <PartitionNavigators/>
+            </Page>
+            <MasterForeignKeyColumnMap>
+              <FieldMap masterColumnName="id_bidang_keahlian" foreginColumnName="id_bidang_keahlian"/>
+            </MasterForeignKeyColumnMap>
+          </Detail>
+        </Details>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="query" queryName="ref.program.keahlian" includedIntoPageList="false" numberByDataSource="0" fileName="ref.program.keahlian" caption="Ref.Program.Keahlian" shortCaption="Ref.Program.Keahlian" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="3" editAbilityMode="3" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="id_pk" caption="Id Pk" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="id_bidang_keahlian" caption="Id Bidang Keahlian" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kode_pk" caption="Kode Pk" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_pk" caption="Nama Pk" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="kode_pk"/>
+            <Column fieldName="nama_pk"/>
+          </List>
+          <View>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="kode_pk"/>
+            <Column fieldName="nama_pk"/>
+          </View>
+          <Edit>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="kode_pk"/>
+            <Column fieldName="nama_pk"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="kode_pk"/>
+            <Column fieldName="nama_pk"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="kode_pk"/>
+            <Column fieldName="nama_pk"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="kode_pk"/>
+            <Column fieldName="nama_pk"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="kode_pk"/>
+            <Column fieldName="nama_pk"/>
+          </Print>
+          <Export>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="kode_pk"/>
+            <Column fieldName="nama_pk"/>
+          </Export>
+          <Compare>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="kode_pk"/>
+            <Column fieldName="nama_pk"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="id_pk" visible="false"/>
+            <Column fieldName="id_bidang_keahlian"/>
+            <Column fieldName="kode_pk"/>
+            <Column fieldName="nama_pk"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="query" queryName="ref.kompetensi.keahlian" includedIntoPageList="false" numberByDataSource="0" fileName="ref.kompetensi.keahlian" caption="Ref.Kompetensi.Keahlian" shortCaption="Ref.Kompetensi.Keahlian" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="3" editAbilityMode="3" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="id_kk" caption="Id Kk" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="id_pk" caption="Id Pk" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kode_kk" caption="Kode Kk" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_kk" caption="Nama Kk" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="singkat" caption="Singkat" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="spektrum2018" caption="Spektrum2018" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="spektrum2021" caption="Spektrum2021" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kode_nama_kk" caption="Kode Nama Kk" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="kode_kk"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="singkat"/>
+            <Column fieldName="spektrum2018"/>
+            <Column fieldName="spektrum2021"/>
+            <Column fieldName="kode_nama_kk"/>
+          </List>
+          <View>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="kode_kk"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="singkat"/>
+            <Column fieldName="spektrum2018"/>
+            <Column fieldName="spektrum2021"/>
+            <Column fieldName="kode_nama_kk"/>
+          </View>
+          <Edit>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="kode_kk"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="singkat"/>
+            <Column fieldName="spektrum2018"/>
+            <Column fieldName="spektrum2021"/>
+            <Column fieldName="kode_nama_kk"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="kode_kk"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="singkat"/>
+            <Column fieldName="spektrum2018"/>
+            <Column fieldName="spektrum2021"/>
+            <Column fieldName="kode_nama_kk"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="kode_kk"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="singkat"/>
+            <Column fieldName="spektrum2018"/>
+            <Column fieldName="spektrum2021"/>
+            <Column fieldName="kode_nama_kk"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="kode_kk"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="singkat"/>
+            <Column fieldName="spektrum2018"/>
+            <Column fieldName="spektrum2021"/>
+            <Column fieldName="kode_nama_kk"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="kode_kk"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="singkat"/>
+            <Column fieldName="spektrum2018"/>
+            <Column fieldName="spektrum2021"/>
+            <Column fieldName="kode_nama_kk"/>
+          </Print>
+          <Export>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="kode_kk"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="singkat"/>
+            <Column fieldName="spektrum2018"/>
+            <Column fieldName="spektrum2021"/>
+            <Column fieldName="kode_nama_kk"/>
+          </Export>
+          <Compare>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="kode_kk"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="singkat"/>
+            <Column fieldName="spektrum2018"/>
+            <Column fieldName="spektrum2021"/>
+            <Column fieldName="kode_nama_kk"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="id_kk" visible="false"/>
+            <Column fieldName="id_pk"/>
+            <Column fieldName="kode_kk"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="singkat"/>
+            <Column fieldName="spektrum2018"/>
+            <Column fieldName="spektrum2021"/>
+            <Column fieldName="kode_nama_kk"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="query" queryName="lap.kilat" numberByDataSource="0" fileName="lap.kilat" caption="Laporan Kilat" shortCaption="Laporan Kilat" groupName="Laporan" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="0" viewAbilityMode="0" editAbilityMode="0" multiEditAbility="0" copyAbilityMode="0" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="kk" caption="Kk" totalFunction="5" selectedFilterOperators="1573119">
+            <Lookup tableName="ref.kompetensi.keahlian" linkFieldName="id_kk" displayFieldName="nama_kk" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="banyak" caption="Banyak" totalFunction="2" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="kk"/>
+            <Column fieldName="banyak"/>
+          </List>
+          <View>
+            <Column fieldName="kk"/>
+            <Column fieldName="banyak"/>
+          </View>
+          <Edit>
+            <Column fieldName="kk"/>
+            <Column fieldName="banyak"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="kk"/>
+            <Column fieldName="banyak"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="kk"/>
+            <Column fieldName="banyak"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="kk"/>
+            <Column fieldName="banyak"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="kk"/>
+            <Column fieldName="banyak"/>
+          </Print>
+          <Export>
+            <Column fieldName="kk"/>
+            <Column fieldName="banyak"/>
+          </Export>
+          <Compare>
+            <Column fieldName="kk"/>
+            <Column fieldName="banyak"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="kk"/>
+            <Column fieldName="banyak"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <EventHandlers>
+          <CustomRenderTotalsHandlerText enabled="true">
+if ($columnName == 'kk') {
+   
+   $customText = '&lt;strong&gt;Banyak&lt;/strong&gt;';
+   $handled = true;
+   
+}
+
+if ($columnName == 'banyak') {
+   
+   $customText = '&lt;strong&gt;' . $totalValue . '&lt;/strong&gt;';
+   $handled = true;
+   
+}          </CustomRenderTotalsHandlerText>
+        </EventHandlers>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="query" queryName="lap.pilihan.kk" numberByDataSource="0" fileName="lap.pilihan.kk" caption="Laporan Pilihan Kompetensi Keahlian" shortCaption="Laporan Pilihan Kompetensi Keahlian" groupName="Laporan" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="0" viewAbilityMode="0" editAbilityMode="0" multiEditAbility="0" copyAbilityMode="0" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="id_kk" caption="Id Kk" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="pilihan" caption="Pilihan Ke" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="status" caption="Status" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_kk" caption="Kompetensi Keahlian" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nopen" caption="No. Registrasi" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama" caption="Nama PDB" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="id_sp" caption="Sekolah Asal" selectedFilterOperators="1589247">
+            <Lookup tableName="ref.satuan.pendidikan" linkFieldName="id_sp" displayFieldName="nama_sp" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_ayah" caption="Nama Ayah" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_ibu" caption="Nama Ibu" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kontak_pdb" caption="Kontak Pdb" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kontak_ayah" caption="Kontak Ayah" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kontak_ibu" caption="Kontak Ibu" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kontak_lain" caption="Kontak Lain" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </List>
+          <View>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </View>
+          <Edit>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="status"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </Print>
+          <Export>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </Export>
+          <Compare>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="status"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="query" queryName="lap.peralihan.tab" numberByDataSource="0" fileName="lap.peralihan.tab" caption="Laporan Peralihan TAB" shortCaption="Laporan Peralihan TAB" groupName="Laporan" addSeparator="false" horizontalFilterCondition="(id_kk NOT IN(6))" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="0" editAbilityMode="0" multiEditAbility="0" copyAbilityMode="0" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="id_kk" caption="ID KK" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="pilihan" caption="Pilihan Ke" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_kk" caption="Kompetensi Keahlian" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nopen" caption="No. Registrasi" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama" caption="Nama PDB" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="id_sp" caption="Sekolah Asal" selectedFilterOperators="1589247">
+            <Lookup tableName="ref.satuan.pendidikan" linkFieldName="id_sp" displayFieldName="nama_sp" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_ayah" caption="Nama Ayah" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_ibu" caption="Nama Ibu" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kontak_pdb" caption="Kontak PDB" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kontak_ayah" caption="Kontak Ayah" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kontak_ibu" caption="Kontak Ibu" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kontak_lain" caption="Kontak Lain" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </List>
+          <View>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </View>
+          <Edit>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </Print>
+          <Export>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </Export>
+          <Compare>
+            <Column fieldName="id_kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="id_kk" visible="false"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="nama_kk"/>
+            <Column fieldName="nopen"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="id_sp"/>
+            <Column fieldName="nama_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="kontak_pdb"/>
+            <Column fieldName="kontak_ayah"/>
+            <Column fieldName="kontak_ibu"/>
+            <Column fieldName="kontak_lain"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="query" queryName="lap.pendaftar.pil1" numberByDataSource="0" fileName="lap.pendaftar.pil1" caption="Progres Pendaftar Pilihan 1" shortCaption="Progres Pendaftar Pilihan 1" groupName="Laporan" addSeparator="true" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="0" viewAbilityMode="0" editAbilityMode="0" multiEditAbility="0" copyAbilityMode="0" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="tanggal" caption="Tanggal" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kk" caption="Kk" selectedFilterOperators="1573119">
+            <Lookup tableName="ref.kompetensi.keahlian" linkFieldName="id_kk" displayFieldName="nama_kk" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="pilihan" caption="Pilihan" totalFunction="5" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="banyak" caption="Banyak" totalFunction="2" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </List>
+          <View>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </View>
+          <Edit>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </Print>
+          <Export>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </Export>
+          <Compare>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <EventHandlers>
+          <CustomRenderTotalsHandlerText enabled="true">
+if ($columnName == 'pilihan') {
+   
+   $customText = '&lt;strong&gt;Banyak&lt;/strong&gt;';
+   $handled = true;
+   
+}
+
+if ($columnName == 'banyak') {
+   
+   $customText = '&lt;strong&gt;' . $totalValue . '&lt;/strong&gt;';
+   $handled = true;
+   
+}          </CustomRenderTotalsHandlerText>
+        </EventHandlers>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="query" queryName="lap.pendaftar.pil2" numberByDataSource="0" fileName="lap.pendaftar.pil2" caption="Progres Pendaftar Pilihan 2" shortCaption="Progres Pendaftar Pilihan 2" groupName="Laporan" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="0" viewAbilityMode="0" editAbilityMode="0" multiEditAbility="0" copyAbilityMode="0" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="tanggal" caption="Tanggal" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kk" caption="Kk" selectedFilterOperators="1573119">
+            <Lookup tableName="ref.kompetensi.keahlian" linkFieldName="id_kk" displayFieldName="nama_kk" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="pilihan" caption="Pilihan" totalFunction="5" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="banyak" caption="Banyak" totalFunction="2" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </List>
+          <View>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </View>
+          <Edit>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </Print>
+          <Export>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </Export>
+          <Compare>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="tanggal"/>
+            <Column fieldName="kk"/>
+            <Column fieldName="pilihan"/>
+            <Column fieldName="banyak"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="query" queryName="verval.pdb.berkas" numberByDataSource="0" fileName="verval.pdb.berkas" caption="Verval Berkas" shortCaption="Verval Berkas" groupName="Verval" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="3" editAbilityMode="3" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="id_pdb_berkas" caption="Id Pdb Berkas" showColumnFilter="false" defaultInsertValue="%UUID%" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="id_pdb" caption="Id Pdb" selectedFilterOperators="1589247">
+            <Lookup tableName="publik.pdb" linkFieldName="id_pdb" displayFieldName="nama" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="id_berkas" caption="Id Berkas" selectedFilterOperators="1573119">
+            <Lookup tableName="ref.berkas" linkFieldName="id_berkas" displayFieldName="nama" lookupFilter="" useLookupOrdering="true" lookupOrdering="0"/>
+            <ViewProperties type="text"/>
+            <EditProperties type="dynamicCombobox"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="status" caption="Status" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="checkBox"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="id_pdb_berkas"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="status"/>
+          </List>
+          <View>
+            <Column fieldName="id_pdb_berkas"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="status"/>
+          </View>
+          <Edit>
+            <Column fieldName="id_pdb_berkas"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="status"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="id_pdb_berkas"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="status"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="id_pdb_berkas"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="status"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="id_pdb_berkas"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="status"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="id_pdb_berkas"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="status"/>
+          </Print>
+          <Export>
+            <Column fieldName="id_pdb_berkas"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="status"/>
+          </Export>
+          <Compare>
+            <Column fieldName="id_pdb_berkas"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="status"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="id_pdb_berkas" visible="false"/>
+            <Column fieldName="id_pdb"/>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="status"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <EventHandlers>
+          <OnPreparePage enabled="true">
+require 'aksi/pdb.berkas_OnPreparePage.inc.php';          </OnPreparePage>
+          <AddEnvironmentVariablesHandler enabled="true">
+require 'aksi/OnAddEnvirontVariable.inc.php';          </AddEnvironmentVariablesHandler>
+        </EventHandlers>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="query" queryName="ref.berkas" numberByDataSource="0" fileName="ref.berkas" caption="Berkas PDB" shortCaption="Berkas PDB" groupName="Referensi" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="0" editAbilityMode="0" multiEditAbility="0" copyAbilityMode="0" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="id_berkas" caption="Id Berkas" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama" caption="Nama" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tanggal_dibuat" caption="Tanggal Dibuat" selectedFilterOperators="2031871">
+            <ViewProperties type="dateTime" dateTimeFormat="d-m-Y H:i:s"/>
+            <EditProperties type="dateTime" dateTimeFormat="d-m-Y H:i:s" firstDayOfWeek="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tanggal_perbarui" caption="Tanggal Perbarui" selectedFilterOperators="2031871">
+            <ViewProperties type="dateTime" dateTimeFormat="d-m-Y H:i:s"/>
+            <EditProperties type="dateTime" dateTimeFormat="d-m-Y H:i:s" firstDayOfWeek="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="sinkronisasi" caption="Sinkronisasi" selectedFilterOperators="2031871">
+            <ViewProperties type="dateTime" dateTimeFormat="d-m-Y H:i:s"/>
+            <EditProperties type="dateTime" dateTimeFormat="d-m-Y H:i:s" firstDayOfWeek="0"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+          </List>
+          <View>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+          </View>
+          <Edit>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+          </Print>
+          <Export>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+          </Export>
+          <Compare>
+            <Column fieldName="id_berkas"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="id_berkas" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="tanggal_dibuat"/>
+            <Column fieldName="tanggal_perbarui"/>
+            <Column fieldName="sinkronisasi"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="query" queryName="publik.pdb.seleksi" numberByDataSource="0" fileName="pdb.seleksi" caption="Seleksi PDB" shortCaption="Hasil Seleksi PDB" groupName="Seleksi" addSeparator="false" horizontalFilterCondition="" recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="3" editAbilityMode="3" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="id_pdb_seleksi" caption="Id Pdb Seleksi" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="id_pdb_pilihan" caption="Id Pdb Pilihan" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tanggal_seleksi" caption="Tanggal Seleksi" selectedFilterOperators="2031871">
+            <ViewProperties type="dateTime" dateTimeFormat="d-m-Y" dateTimeKind="1"/>
+            <EditProperties type="dateTime" dateTimeFormat="d-m-Y" dateTimeKind="1" firstDayOfWeek="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="status" caption="Status" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator="."/>
+            </ViewProperties>
+            <EditProperties type="spinEdit" maxValue="100" minValue="0" useConstraints="false" step="1"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="id_pdb_seleksi"/>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="tanggal_seleksi"/>
+            <Column fieldName="status"/>
+          </List>
+          <View>
+            <Column fieldName="id_pdb_seleksi"/>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="tanggal_seleksi"/>
+            <Column fieldName="status"/>
+          </View>
+          <Edit>
+            <Column fieldName="id_pdb_seleksi"/>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="tanggal_seleksi"/>
+            <Column fieldName="status"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="id_pdb_seleksi"/>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="tanggal_seleksi"/>
+            <Column fieldName="status"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="id_pdb_seleksi"/>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="tanggal_seleksi"/>
+            <Column fieldName="status"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="id_pdb_seleksi"/>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="tanggal_seleksi"/>
+            <Column fieldName="status"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="id_pdb_seleksi"/>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="tanggal_seleksi"/>
+            <Column fieldName="status"/>
+          </Print>
+          <Export>
+            <Column fieldName="id_pdb_seleksi"/>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="tanggal_seleksi"/>
+            <Column fieldName="status"/>
+          </Export>
+          <Compare>
+            <Column fieldName="id_pdb_seleksi"/>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="tanggal_seleksi"/>
+            <Column fieldName="status"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="id_pdb_seleksi" visible="false"/>
+            <Column fieldName="id_pdb_pilihan"/>
+            <Column fieldName="tanggal_seleksi"/>
+            <Column fieldName="status"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+    </Pages>
+    <UserAuthorization/>
+    <UserGrants enableGuestAccess="false">
+      <UserPageGrants/>
+    </UserGrants>
+    <EventHandlers>
+      <OnPreparePage enabled="true">
+require 'aksi/Global_OnPreparePage.inc.php';      </OnPreparePage>
+      <AfterInsertRecord enabled="true">
+require 'aksi/OnAfterInsertRecord.inc.php';      </AfterInsertRecord>
+      <CustomHTMLHeaderHandlerText enabled="true">
+/*$customHtmlHeaderText = 
+
+  '&lt;link rel=&quot;stylesheet&quot; href=&quot;external_data/pg_styles.css&quot;&gt;' .
+
+  '&lt;script src=&quot;external_data/pg_utils.js&quot;&gt;&lt;/script&gt;';
+*/
+
+$customHtmlHeaderText = '&lt;link rel=&quot;stylesheet&quot;  type=&quot;text/css&quot; href=&quot;components/assets/css/pdb.css&quot;&gt;';      </CustomHTMLHeaderHandlerText>
+    </EventHandlers>
+    <Header/>
+    <Footer/>
+    <PHPOptions/>
+    <Groups>
+      <Group caption="No group"/>
+      <Group caption="Referensi"/>
+      <Group caption="Kurikulum"/>
+      <Group caption="Pendaftaran"/>
+      <Group caption="Verval"/>
+      <Group caption="Seleksi"/>
+      <Group caption="Laporan"/>
+    </Groups>
+    <HomePageBanner>
+&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;h1&gt;
+    Selamat Datang&lt;br /&gt;
+    Aplikasi PPDB SMK Negeri 2 Sumbawa Besar
+    &lt;h2&gt;Tahun Pelajaran 2021/2022&lt;/h2&gt;
+  &lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+  .button {
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+  
+&lt;/style&gt;
+
+&lt;center&gt;
+  &lt;a href=&quot;http://localhost/pusdatin/pdb/publik.pdb.php&quot;&gt;
+    &lt;button class=&quot;button&quot;&gt;&lt;span&gt;Pendaftaran&lt;/span&gt;&lt;/button&gt;
+  &lt;/a&gt;
+&lt;/center&gt;    </HomePageBanner>
+    <outgoingMailSettings mailer="0" fromEmail="" fromName=""/>
+  </Presentation>
+  <UserCSS>
+@modal-lg: 1200px;  </UserCSS>
+  <PdfUserStyles/>
+  <PrintUserStyles/>
+  <UserJS/>
+  <ExcludedPaths/>
+  <DefaultPageProperties recordsPerPage="50" NavigatorPosition="3" insertAbilityMode="3" editAbilityMode="3" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="19" exportSelectedRecordsAvailable="19" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="19" printAvailable="9" highlightRowOnMouseHover="true" useActionImages="true" useFixedGridHeader="true" showLineNumbers="true" recordsComparisionAvailable="false" modalFormSize="2" formErrorsPlacement="2"/>
+  <DefaultDataFormats numberAfterDecimal="0" DecimalSeparator="," ThousandSeparator="." DateTimeFormat="d-m-Y H:i:s" DateFormat="d-m-Y" firstDayOfWeek="1"/>
+</Project>
